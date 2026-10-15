@@ -1,0 +1,11 @@
+@"
+bin/
+*.exe
+*.test
+*.out
+config.local.json
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+"@ | Set-Content -Encoding ascii .gitignore
