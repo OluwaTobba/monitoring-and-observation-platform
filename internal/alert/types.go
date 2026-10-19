@@ -69,22 +69,22 @@ type State string
 
 const (
 	StateInactive State = "inactive"
-	StatePending  State = "pending"
-	StateFiring   State = "firing"
+	StatePending State = "pending"
+	StateFiring State = "firing"
 )
 
 type Alert struct {
-	Rule     string `json:"rule"`
+	Rule string `json:"rule"`
 	Severity string `json:"severity"`
-	Series   tsdb.Labels `json:"series"`
-	Value    float64 `json:"value"`
-	State    State `json:"state"`
-	Since    time.Time `json:"since"`
-	FiredAt  *time.Time `json:"fired_at,omitempty"`
+	Series tsdb.Labels `json:"series"`
+	Value float64 `json:"value"`
+	State State `json:"state"`
+	Since time.Time `json:"since"`
+	FiredAt *time.Time `json:"fired_at,omitempty"`
 }
 
 type Event struct {
 	Status string `json:"status"`
-	Alert  Alert `json:"alert"`
-	Time   time.Time `json:"time"`
+	Alert Alert `json:"alert"`
+	Time time.Time `json:"time"`
 }
