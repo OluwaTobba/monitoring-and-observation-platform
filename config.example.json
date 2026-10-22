@@ -1,0 +1,39 @@
+{
+  "listen": ":8080",
+  "retention": "2h",
+  "max_samples_per_series": 20000,
+  "alert_eval_interval": "5s",
+  "webhook_url": "",
+  "scrape_targets": [
+    {
+      "job": "demo",
+      "url": "http://localhost:9100/metrics",
+      "interval": "5s",
+      "timeout": "3s",
+      "labels": {"env": "dev"}
+    },
+    {
+      "job": "obsd",
+      "url": "http://localhost:8080/metrics",
+      "interval": "15s"
+    }
+  ],
+  "alert_rules": [
+    {
+      "name": "DemoHighCPU",
+      "metric": "demo_cpu_load",
+      "op": ">",
+      "threshold": 1.2,
+      "for": "20s",
+      "severity": "warning"
+    },
+    {
+      "name": "ScrapeTargetDown",
+      "metric": "up",
+      "op": "==",
+      "threshold": 0,
+      "for": "30s",
+      "severity": "critical"
+    }
+  ]
+}
